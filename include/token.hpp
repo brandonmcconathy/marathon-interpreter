@@ -12,28 +12,28 @@ namespace Token {
 
 	// Define possible TokenTypes
 	// Special
-	inline constexpr std::string ILLEGAL 	= "ILLEGAL";
-	inline constexpr std::string END		= "END";
+	inline constexpr TokenType ILLEGAL 		= "ILLEGAL";
+	inline constexpr TokenType END			= "END";
 
 	// Identifiers and literals
-	inline constexpr std::string IDENT 		= "IDENT";
-	inline constexpr std::string INT 		= "INT";
+	inline constexpr TokenType IDENT		= "IDENT";
+	inline constexpr TokenType INT 			= "INT";
 
 	// Operators
-	inline constexpr std::string ASSIGN 	= "ASSIGN";
-	inline constexpr std::string PLUS 		= "+";
+	inline constexpr TokenType ASSIGN 		= "ASSIGN";
+	inline constexpr TokenType PLUS 		= "+";
 
 	// Delimeters
-	inline constexpr std::string COMMA 		= ",";
-	inline constexpr std::string SEMICOLON 	= ";";
+	inline constexpr TokenType COMMA		= ",";
+	inline constexpr TokenType SEMICOLON	= ";";
 
 	// Utility
-	inline constexpr std::string LPAREN 	= "(";
-	inline constexpr std::string RPAREN 	= ")";
-	inline constexpr std::string LBRACE 	= "{";
-	inline constexpr std::string RBRACE 	= "}";
+	inline constexpr TokenType LPAREN 		= "(";
+	inline constexpr TokenType RPAREN 		= ")";
+	inline constexpr TokenType LBRACE 		= "{";
+	inline constexpr TokenType RBRACE 		= "}";
 
 	// Keywords
-	inline constexpr std::string FUNCTION 	= "FUNCTION";
-	inline constexpr std::string LET 		= "LET";
+	inline constexpr TokenType FUNCTION 	= "FUNCTION";
+	inline constexpr TokenType LET 			= "LET";
 }
