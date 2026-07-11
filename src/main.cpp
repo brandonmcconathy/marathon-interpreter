@@ -13,10 +13,10 @@ int main(int argc, char* argv[]) {
 
 	std::string test_string = "+(){};";
 	Lexer l = Lexer(test_string);
-	l.print();
-	while (l.ch != 0) {
-		l.readChar();
-		l.print();
+	Token currToken;
+	while (currToken.type != TokenType::END) {
+		currToken = l.nextToken();
+		currToken.print();
 	}
 	return 0;
 }
