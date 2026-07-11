@@ -1,39 +1,42 @@
 #pragma once
 #include <string>
 
-namespace Token {
+struct Token {
+	std::string	type;
+	std::string	literal;
 
-	using TokenType = std::string;
+	Token();
+	Token(std::string type, std::string literal);
 
-	struct Token {
-		TokenType	Type;
-		std::string	Literal;
-	};
+	void print();
+};
 
-	// Define possible TokenTypes
+namespace TokenType {
+
+	// Define possible std::strings
 	// Special
-	inline constexpr TokenType ILLEGAL 		= "ILLEGAL";
-	inline constexpr TokenType END			= "END";
+	inline constexpr std::string ILLEGAL 	= "ILLEGAL";
+	inline constexpr std::string END		= "END";
 
 	// Identifiers and literals
-	inline constexpr TokenType IDENT		= "IDENT";
-	inline constexpr TokenType INT 			= "INT";
+	inline constexpr std::string IDENT		= "IDENT";
+	inline constexpr std::string INT 		= "INT";
 
 	// Operators
-	inline constexpr TokenType ASSIGN 		= "ASSIGN";
-	inline constexpr TokenType PLUS 		= "+";
+	inline constexpr std::string ASSIGN 	= "ASSIGN";
+	inline constexpr std::string PLUS 		= "+";
 
 	// Delimeters
-	inline constexpr TokenType COMMA		= ",";
-	inline constexpr TokenType SEMICOLON	= ";";
+	inline constexpr std::string COMMA		= ",";
+	inline constexpr std::string SEMICOLON	= ";";
 
 	// Utility
-	inline constexpr TokenType LPAREN 		= "(";
-	inline constexpr TokenType RPAREN 		= ")";
-	inline constexpr TokenType LBRACE 		= "{";
-	inline constexpr TokenType RBRACE 		= "}";
+	inline constexpr std::string LPAREN 	= "(";
+	inline constexpr std::string RPAREN 	= ")";
+	inline constexpr std::string LBRACE 	= "{";
+	inline constexpr std::string RBRACE 	= "}";
 
 	// Keywords
-	inline constexpr TokenType FUNCTION 	= "FUNCTION";
-	inline constexpr TokenType LET 			= "LET";
+	inline constexpr std::string FUNCTION 	= "FUNCTION";
+	inline constexpr std::string LET 		= "LET";
 }

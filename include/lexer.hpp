@@ -2,6 +2,8 @@
 
 #include <string>
 
+#include <token.hpp>
+
 struct Lexer {
 	std::string	input;
 	int 		position;
@@ -13,4 +15,8 @@ struct Lexer {
 	void print();
 
 	void readChar();
+
+	Token nextToken();
+
+	Token newToken(std::string tokenType, char ch);
 };
