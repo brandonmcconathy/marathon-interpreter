@@ -4,7 +4,7 @@
 #include <lexer.hpp>
 #include <token.hpp>
 
-Lexer::Lexer(std::string input) {
+lexer::Lexer::Lexer(std::string input) {
 	this->input 		= input;
 	this->position 		= -1;
 	this->readPosition 	= 0;
@@ -12,14 +12,14 @@ Lexer::Lexer(std::string input) {
 	this->readChar();
 }
 
-void Lexer::print() {
-	std::cout << "input: " << this->input << std::endl;
-	std::cout << "position: " << this->position << std::endl;
-	std::cout << "readPosition: " << this->readPosition << std::endl;
+void lexer::Lexer::print() {
+	std::cout << "input: " << this->input << "\n";
+	std::cout << "position: " << this->position << "\n";
+	std::cout << "readPosition: " << this->readPosition << "\n";
 	std::cout << "ch: " << this->ch << std::endl;
 }
 
-void Lexer::readChar() {
+void lexer::Lexer::readChar() {
 	if (this->readPosition >= input.length()) {
 		this->ch = 0;
 	} else {
@@ -29,45 +29,61 @@ void Lexer::readChar() {
 	this->readPosition++;
 }
 
-Token Lexer::nextToken() {
-	Token tok;
+token::Token lexer::Lexer::nextToken() {
+	token::Token tok;
 
 	switch (this->ch) {
 		case '=':
-			tok = this->newToken(TokenType::ASSIGN, this->ch);
+			tok = this->newToken(token::TokenType::ASSIGN, this->ch);
 			break;
 		case ';':
-			tok = this->newToken(TokenType::SEMICOLON, this->ch);
+			tok = this->newToken(token::TokenType::SEMICOLON, this->ch);
 			break;
 		case '(':
-			tok = this->newToken(TokenType::LPAREN, this->ch);
+			tok = this->newToken(token::TokenType::LPAREN, this->ch);
 			break;
 		case ')':
-			tok = this->newToken(TokenType::RPAREN, this->ch);
+			tok = this->newToken(token::TokenType::RPAREN, this->ch);
 			break;
 		case ',':
-			tok = this->newToken(TokenType::COMMA, this->ch);
+			tok = this->newToken(token::TokenType::COMMA, this->ch);
 			break;
 		case '+':
-			tok = this->newToken(TokenType::PLUS, this->ch);
+			tok = this->newToken(token::TokenType::PLUS, this->ch);
 			break;
 		case '{':
-			tok = this->newToken(TokenType::LBRACE, this->ch);
+			tok = this->newToken(token::TokenType::LBRACE, this->ch);
 			break;
 		case '}':
-			tok = this->newToken(TokenType::RBRACE, this->ch);
+			tok = this->newToken(token::TokenType::RBRACE, this->ch);
 			break;
 		case 0:
-			tok = this->newToken(TokenType::END, this->ch);
+			tok = this->newToken(token::TokenType::END, this->ch);
 			break;
 		default:
-			tok = this->newToken(TokenType::ILLEGAL, this->ch);
+			if (this->isLetter()) {
+				tok.literal = this->readIdentifier();
+				return tok;
+			}
+			tok = this->newToken(token::TokenType::ILLEGAL, this->ch);
 			break;
 	}
 	this->readChar();
 	return tok;
 }
 
-Token Lexer::newToken(std::string type, char ch) {
-	return Token(type, {ch});
+token::Token lexer::Lexer::newToken(std::string type, char ch) {
+	return token::Token(type, {ch});
+}
+
+bool lexer::Lexer::isLetter() {
+	return (this->ch >= 'A' && this->ch <= 'Z') || (this->ch >= 'a' && this->ch <= 'z');
+}
+
+std::string lexer::Lexer::readIdentifier() {
+	int startPos = this->position;
+	while (this->isLetter()) {
+		this->readChar();
+	}
+	return this->input.substr(startPos, this->position - startPos + 1);
 }

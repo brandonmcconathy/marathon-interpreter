@@ -4,19 +4,27 @@
 
 #include <token.hpp>
 
-struct Lexer {
-	std::string	input;
-	int 		position;
-	int 		readPosition;
-	char		ch;
+namespace lexer {
 
-	Lexer(std::string input);
+	struct Lexer {
+		std::string	input;
+		int 		position;
+		int 		readPosition;
+		char		ch;
 
-	void print();
+		Lexer(std::string input);
 
-	void readChar();
+		void print();
 
-	Token nextToken();
+		void readChar();
 
-	Token newToken(std::string tokenType, char ch);
-};
+		token::Token nextToken();
+
+		token::Token newToken(std::string tokenType, char ch);
+
+		bool isLetter();
+
+		std::string readIdentifier();
+	};
+
+}

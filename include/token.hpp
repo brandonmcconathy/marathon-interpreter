@@ -1,42 +1,46 @@
 #pragma once
 #include <string>
 
-struct Token {
-	std::string	type;
-	std::string	literal;
+namespace token {
 
-	Token();
-	Token(std::string type, std::string literal);
+	struct Token {
+		std::string	type;
+		std::string	literal;
 
-	void print();
-};
+		Token();
+		Token(std::string type, std::string literal);
 
-namespace TokenType {
+		void print();
+	};
 
-	// Define possible std::strings
-	// Special
-	inline constexpr std::string ILLEGAL 	= "ILLEGAL";
-	inline constexpr std::string END		= "END";
+	namespace TokenType {
 
-	// Identifiers and literals
-	inline constexpr std::string IDENT		= "IDENT";
-	inline constexpr std::string INT 		= "INT";
+		// Define possible std::strings
+		// Special
+		inline constexpr std::string ILLEGAL 	= "ILLEGAL";
+		inline constexpr std::string END		= "END";
 
-	// Operators
-	inline constexpr std::string ASSIGN 	= "ASSIGN";
-	inline constexpr std::string PLUS 		= "+";
+		// Identifiers and literals
+		inline constexpr std::string IDENT		= "IDENT";
+		inline constexpr std::string INT 		= "INT";
 
-	// Delimeters
-	inline constexpr std::string COMMA		= ",";
-	inline constexpr std::string SEMICOLON	= ";";
+		// Operators
+		inline constexpr std::string ASSIGN 	= "ASSIGN";
+		inline constexpr std::string PLUS 		= "+";
 
-	// Utility
-	inline constexpr std::string LPAREN 	= "(";
-	inline constexpr std::string RPAREN 	= ")";
-	inline constexpr std::string LBRACE 	= "{";
-	inline constexpr std::string RBRACE 	= "}";
+		// Delimeters
+		inline constexpr std::string COMMA		= ",";
+		inline constexpr std::string SEMICOLON	= ";";
 
-	// Keywords
-	inline constexpr std::string FUNCTION 	= "FUNCTION";
-	inline constexpr std::string LET 		= "LET";
+		// Utility
+		inline constexpr std::string LPAREN 	= "(";
+		inline constexpr std::string RPAREN 	= ")";
+		inline constexpr std::string LBRACE 	= "{";
+		inline constexpr std::string RBRACE 	= "}";
+
+		// Keywords
+		inline constexpr std::string FUNCTION 	= "FUNCTION";
+		inline constexpr std::string LET 		= "LET";
+	}
+
 }
