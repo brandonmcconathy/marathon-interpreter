@@ -63,6 +63,7 @@ token::Token lexer::Lexer::nextToken() {
 		default:
 			if (this->isLetter()) {
 				tok.literal = this->readIdentifier();
+				tok.type = token::lookupIdent(tok.literal);
 				return tok;
 			}
 			tok = this->newToken(token::TokenType::ILLEGAL, this->ch);

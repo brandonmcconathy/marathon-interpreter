@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <unordered_map>
 
 namespace token {
 
@@ -42,5 +43,12 @@ namespace token {
 		inline constexpr std::string FUNCTION 	= "FUNCTION";
 		inline constexpr std::string LET 		= "LET";
 	}
+
+	inline std::unordered_map<std::string, std::string> keywords = {
+		{"fn", TokenType::FUNCTION},
+		{"let", TokenType::LET}
+	};
+
+	std::string lookupIdent(std::string ident);
 
 }
