@@ -25,6 +25,8 @@ namespace lexer {
 		bool isLetter();
 
 		std::string readIdentifier();
+
+		void eatWhitespace();
 	};
 
 }

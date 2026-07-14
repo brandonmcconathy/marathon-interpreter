@@ -18,7 +18,7 @@ void test(std::string input) {
 	}
 
 	// Print Tokens
-	for (int i = 0; i < tokenized_input.size(); i++) {
+	for (size_t i = 0; i < tokenized_input.size(); i++) {
 		tokenized_input[i].print();
 	}
 	
