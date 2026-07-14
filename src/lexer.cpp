@@ -20,7 +20,7 @@ void lexer::Lexer::print() {
 }
 
 void lexer::Lexer::readChar() {
-	if (this->readPosition >= input.length()) {
+	if (this->readPosition >= static_cast<int>(input.length())) {
 		this->ch = 0;
 	} else {
 		this->ch = this->input[this->readPosition];
@@ -31,6 +31,8 @@ void lexer::Lexer::readChar() {
 
 token::Token lexer::Lexer::nextToken() {
 	token::Token tok;
+
+	this->eatWhitespace();
 
 	switch (this->ch) {
 		case '=':
@@ -86,5 +88,11 @@ std::string lexer::Lexer::readIdentifier() {
 	while (this->isLetter()) {
 		this->readChar();
 	}
-	return this->input.substr(startPos, this->position - startPos + 1);
+	return this->input.substr(startPos, this->position - startPos);
+}
+
+void lexer::Lexer::eatWhitespace() {
+	while (this->ch == ' ' || this->ch == '\t' || this->ch == '\n' || this->ch == '\r') {
+		this->readChar();
+	}
 }
