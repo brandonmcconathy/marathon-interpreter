@@ -16,3 +16,10 @@ token::Token::Token(std::string type, std::string literal) {
 void token::Token::print() {
 	std::cout << "Type: " << this->type << ", Literal: " << this->literal << std::endl;
 }
+
+std::string token::lookupIdent(std::string ident) {
+	if (token::keywords.contains(ident)) {
+		return token::keywords[ident];
+	}
+	return token::TokenType::IDENT;
+}
