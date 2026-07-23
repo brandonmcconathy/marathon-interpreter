@@ -12,6 +12,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: make and run tests
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential libgtest-dev
+
+    - name: Compile gtest
+      run: |
+        cd /usr/src/googletest
+        sudo mkdir build
+        cd build
+        sudo cmake ..
+        sudo make
+        sudo make install
+
+    - name: Compile code
+      run: make
+
+    - name: Run tests
       run: make test
