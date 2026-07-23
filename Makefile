@@ -7,7 +7,7 @@ TEST_DIR  := tests
 
 # Compiler and flags
 CXX      := g++
-CXXFLAGS := -Wall -std=c++26 -I$(INC_DIR)
+CXXFLAGS := -Wall -std=c++20 -I$(INC_DIR)
 GTEST_LIBS := -lgtest -lgtest_main -pthread
 
 # Target executable path
