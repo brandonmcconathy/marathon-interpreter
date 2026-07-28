@@ -11,6 +11,12 @@ namespace token {
 		Token();
 		Token(std::string type, std::string literal);
 
+		auto operator<=>(const Token&) const = default;
+
+		friend std::ostream& operator<<(std::ostream& out, const Token& t) {
+			return out << "Token{type: " << t.type << ", literal: " << t.literal << "}";
+		}
+
 		void print();
 	};
 
