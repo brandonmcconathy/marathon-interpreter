@@ -60,7 +60,7 @@ token::Token lexer::Lexer::nextToken() {
 			tok = this->newToken(token::TokenType::RBRACE, this->ch);
 			break;
 		case 0:
-			tok = this->newToken(token::TokenType::END, this->ch);
+			tok = this->newToken(token::TokenType::END, ' ');
 			break;
 		default:
 			if (this->isLetter()) {
